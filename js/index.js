@@ -13,11 +13,17 @@ if (dataJson != null) {
 function themSV() {
     var sv = layThongTinTuForm();
     // check validate
-    var isValid = kiemTraRong(sv.ma, "spanMaSV") && kiemTraRong(sv.ten, "spanTenSV")
+    var isValid = 
+    kiemTraRong(sv.ma,"spanMaSV") && 
+    kiemTraTrung(sv.ma,"spanMaSV", dssv, "Mã sinh viên này đã tồn tại","ma");
+
+    isValid = isValid & 
+    kiemTraTrung(sv.email, "spanEmailSV",dssv, "Email này đã tồn tại","email");
     if(!isValid) {
         // nếu isvalid sai thì dừng fuction themSV tại đây
         return;
     }
+
 
     // thêm dssv 
     dssv.push(sv);

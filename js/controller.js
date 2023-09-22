@@ -8,19 +8,7 @@ function layThongTinTuForm(){
     var diemhoa = document.getElementById("txtDiemHoa").value * 1;
 
     //tạo objective
-    var sv = {
-        ma: ma,
-        ten: ten,
-        email: email,
-        matkhau: matkhau,
-        diemtoan: diemtoan,
-        diemly: diemly,
-        diemhoa: diemhoa,
-        diemTB : function() {
-            var dtb = (this.diemtoan  + this.diemhoa + this.diemly)/3
-            return dtb;
-        },
-    };
+    var sv = new SinhVien(ma,ten,email,matkhau,diemtoan,diemly, diemhoa)
     return sv;
 }
 
@@ -34,7 +22,7 @@ function renderDSSV(dssv) {
          <td>  ${sv.ma}  </td>
          <td>  ${sv.ten}  </td>
          <td>  ${sv.email}  </td>
-         <td> 0  </td>
+         <td> ${sv.tinhDTB()}  </td>
          <td> 
             <button onclick="xoaSV(${sv.ma})" class="btn btn-danger">Xóa</button> 
             <button onclick="suaSV(${sv.ma})" class="btn btn-warning">Sửa</button>  
